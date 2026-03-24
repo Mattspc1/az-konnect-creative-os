@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;800&family=Inter:wght@400;600&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: #000;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .ad-container {
+            position: relative;
+        }
+
+        .ad-frame {
+            border: 1px solid #1a2332;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .ad-frame.square {
+            width: 1080px;
+            height: 1080px;
+            padding: 80px;
+        }
+
+        .ad-frame.vertical {
+            width: 1080px;
+            height: 1350px;
+            padding: 100px;
+        }
+
+        .ad-hook {
+            font-family: 'Outfit', sans-serif;
+            font-size: 5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 40px;
+        }
+
+        .ad-subtext {
+            font-size: 2.5rem;
+            line-height: 1.4;
+            margin-bottom: 60px;
+            max-width: 80%;
+        }
+
+        .ad-cta-btn {
+            display: inline-block;
+            padding: 25px 60px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 2.2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .ad-logo {
+            position: absolute;
+            bottom: 40px;
+            left: 40px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 2.5rem;
+            opacity: 0.8;
+        }
+
+        .ad-badge {
+            position: absolute;
+            top: 40px;
+            right: 40px;
+            padding: 15px 30px;
+            border-radius: 12px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Styles */
+        .ad-style-1 {
+            background: linear-gradient(135deg, #05070A 0%, #0a1628 100%);
+        }
+
+        .ad-style-1 .ad-hook {
+            color: #fff;
+        }
+
+        .ad-style-1 .ad-subtext {
+            color: #8b9bb4;
+        }
+
+        .ad-style-1 .ad-cta-btn {
+            background: #057ED6;
+            color: #fff;
+        }
+
+        .ad-style-1 .ad-badge {
+            background: rgba(5, 126, 214, 0.2);
+            color: #3da5f5;
+        }
+
+        .ad-style-2 {
+            background: linear-gradient(180deg, #057ED6 0%, #0a1628 100%);
+        }
+
+        .ad-style-2 .ad-hook {
+            color: #fff;
+        }
+
+        .ad-style-2 .ad-subtext {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .ad-style-2 .ad-cta-btn {
+            background: #fff;
+            color: #05070A;
+        }
+
+        .ad-style-2 .ad-badge {
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+        }
+
+        .ad-style-3 {
+            background: linear-gradient(135deg, #0d1117 0%, #1a2744 50%, #057ED6 100%);
+        }
+
+        .ad-style-3 .ad-hook {
+            color: #fff;
+        }
+
+        .ad-style-3 .ad-subtext {
+            color: #8b9bb4;
+        }
+
+        .ad-style-3 .ad-cta-btn {
+            background: #22c55e;
+            color: #fff;
+        }
+
+        .ad-style-3 .ad-badge {
+            background: rgba(34, 197, 94, 0.2);
+            color: #86efac;
+        }
+
+        .ad-style-4 {
+            background: #05070A;
+            border: 4px solid #057ED6;
+        }
+
+        .ad-style-4 .ad-hook {
+            color: #057ED6;
+        }
+
+        .ad-style-4 .ad-subtext {
+            color: #8b9bb4;
+        }
+
+        .ad-style-4 .ad-cta-btn {
+            background: #057ED6;
+            color: #fff;
+        }
+
+        .ad-style-4 .ad-badge {
+            background: #057ED6;
+            color: #fff;
+        }
+
+        .ad-style-5 {
+            background: linear-gradient(180deg, #0f172a 0%, #1e3a5f 100%);
+        }
+
+        .ad-style-5 .ad-hook {
+            color: #fcd34d;
+        }
+
+        .ad-style-5 .ad-subtext {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .ad-style-5 .ad-cta-btn {
+            background: #f59e0b;
+            color: #05070A;
+        }
+
+        .ad-style-5 .ad-badge {
+            background: rgba(245, 158, 11, 0.3);
+            color: #fcd34d;
+        }
+
+        .ad-style-6 {
+            background: radial-gradient(ellipse at top, #1a3a5c 0%, #05070A 70%);
+        }
+
+        .ad-style-6 .ad-hook {
+            color: #fff;
+        }
+
+        .ad-style-6 .ad-subtext {
+            color: #8b9bb4;
+        }
+
+        .ad-style-6 .ad-cta-btn {
+            background: linear-gradient(135deg, #057ED6, #3da5f5);
+            color: #fff;
+        }
+
+        .ad-style-6 .ad-badge {
+            background: rgba(5, 126, 214, 0.3);
+            color: #3da5f5;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="render-target" class="ad-container"></div>
+    <script>
+        const HOOKS = [
+            "What happens when AI calls 6,500 homeowners in 7 days?",
+            "This real estate agent hasn't cold called in 6 months.",
+            "The top 1% of agents don't dial phones anymore.",
+            "We gave an AI our best cold-call script.",
+            "What if your calendar filled itself every week?",
+            "There's a new way to prospect.",
+            "Built by a team that's scaled sales since 2020.",
+            "Trusted by agents at the top 5 brokerages.",
+            "Our AI uses the same scripts as 7-figure agents.",
+            "Backed by real data: AI outperforms human SDRs by 3x.",
+            "From the team that generated millions in revenue.",
+            "6,500 calls. 27 meetings. 1 listing. Week one.",
+            "One agent booked 27 appointments automatically.",
+            "Our AI caller books more meetings in a week.",
+            "Real agents. Real results. Zero cold calling.",
+            "Watch how one agent turned 6,500 cold leads into 27 meetings.",
+            "Only 7 onboarding spots left this month.",
+            "Go live in 72 hours. Money-back guarantee.",
+            "Spring market is here. Your competitors are using AI.",
+            "Every day you wait is 900+ leads your competitors are calling.",
+            "Limited capacity — we're closing onboarding Friday.",
+            "72-hour setup. If it doesn't work, you pay nothing.",
+            "The fast lane to automated outreach.",
+            "Close deals, don't dial numbers."
+        ];
+
+        const CTAS = [
+            "Reserve Your Spot", "Book a Free Demo Call", "Get Started Now",
+            "Claim Your Spot", "See It In Action", "Learn More", "Watch Demo"
+        ];
+
+        const STYLES = ['ad-style-1', 'ad-style-2', 'ad-style-3', 'ad-style-4', 'ad-style-5', 'ad-style-6'];
+
+        function renderAd(index) {
+            if (index >= 24) return false;
+
+            const hook = HOOKS[index];
+            const style = STYLES[index % STYLES.length];
+            const isVertical = index >= 9; // First 9 are square, last 15 are vertical
+            const cta = CTAS[index % CTAS.length];
+            const format = isVertical ? 'vertical' : 'square';
+            const badge = isVertical ? '1080×1350' : '1080×1080';
+            const idStr = String(index + 7).padStart(2, '0');
+
+            const html = \`<div class="ad-frame \${style} \${format}" id="ad-\${idStr}">
+        <div class="ad-badge">\${badge}</div>
+        <div class="ad-hook">\${hook}</div>
+        <div class="ad-subtext">AI-powered calling for real estate agents.<br>6,500+ calls/week. 27 meetings. 72-hour setup.</div>
+        <div class="ad-cta-btn">\${cta}</div>
+        <div class="ad-logo">AZ Konnect <span style="color:#057ED6">LIVE</span></div>
+      </div>\`;
+      
+      document.getElementById('render-target').innerHTML = html;
+      return { format, idStr };
+    }
+    </script>
+</body>
+
+</html>

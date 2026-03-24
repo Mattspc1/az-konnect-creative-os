@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Creative OS — AZ Konnect</title>
+    <meta name="description" content="AZ Konnect Creative OS — Multi-platform content generation system">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="app">
+
+        <!-- ═══ SIDEBAR ═══ -->
+        <aside class="sidebar">
+            <img src="assets/logo/az_konnect_logo.png" alt="AZ" class="sidebar-brand">
+            <button class="sb-create" id="btn-create" aria-label="Create">
+                <svg viewBox="0 0 24 24">
+                    <line x1="12" y1="5" x2="12" y2="19" />
+                    <line x1="5" y1="12" x2="19" y2="12" />
+                </svg>
+                <span class="sb-tooltip">Create</span>
+            </button>
+            <div class="sb-sep"></div>
+            <div class="sb-group-scroll">
+                <!-- Group 1: Core -->
+                <button class="sb-item active" data-view="dashboard" aria-label="Dashboard">
+                    <svg viewBox="0 0 24 24">
+                        <rect x="3" y="3" width="7" height="7" rx="1" />
+                        <rect x="14" y="3" width="7" height="7" rx="1" />
+                        <rect x="3" y="14" width="7" height="7" rx="1" />
+                        <rect x="14" y="14" width="7" height="7" rx="1" />
+                    </svg>
+                    <span class="sb-tooltip">Dashboard</span>
+                </button>
+                <button class="sb-item" data-view="projects" aria-label="Projects">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z" />
+                    </svg>
+                    <span class="sb-tooltip">Projects</span>
+                </button>
+                <div class="sb-sep"></div>
+                <!-- Group 2: Modes -->
+                <button class="sb-item" data-view="ads" aria-label="Ads Creative">
+                    <svg viewBox="0 0 24 24">
+                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+                    </svg>
+                    <span class="sb-tooltip">Ads Creative</span>
+                </button>
+                <button class="sb-item" data-view="content" aria-label="Content Creation">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 20h9" />
+                        <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
+                    </svg>
+                    <span class="sb-tooltip">Content Creation</span>
+                </button>
+                <div class="sb-sep"></div>
+                <!-- Group 3: Assets -->
+                <button class="sb-item" data-view="library" aria-label="Asset Library">
+                    <svg viewBox="0 0 24 24">
+                        <rect x="3" y="3" width="18" height="18" rx="2" />
+                        <circle cx="8.5" cy="8.5" r="1.5" />
+                        <polyline points="21 15 16 10 5 21" />
+                    </svg>
+                    <span class="sb-tooltip">Asset Library</span>
+                </button>
+                <button class="sb-item" data-view="brandkit" aria-label="Brand Kit">
+                    <svg viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="10" />
+                        <circle cx="12" cy="12" r="6" />
+                        <circle cx="12" cy="12" r="2" />
+                    </svg>
+                    <span class="sb-tooltip">Brand Kit</span>
+                </button>
+                <button class="sb-item" data-view="templates" aria-label="Templates">
+                    <svg viewBox="0 0 24 24">
+                        <rect x="3" y="3" width="18" height="18" rx="2" />
+                        <line x1="3" y1="9" x2="21" y2="9" />
+                        <line x1="9" y1="21" x2="9" y2="9" />
+                    </svg>
+                    <span class="sb-tooltip">Templates</span>
+                </button>
+            </div>
+            <div class="sb-bottom">
+                <button class="sb-item" data-view="history" aria-label="History">
+                    <svg viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="10" />
+                        <polyline points="12 6 12 12 16 14" />
+                    </svg>
+                    <span class="sb-tooltip">History</span>
+                </button>
+                <button class="sb-item" data-view="export" aria-label="Export">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                        <polyline points="7 10 12 15 17 10" />
+                        <line x1="12" y1="15" x2="12" y2="3" />
+                    </svg>
+                    <span class="sb-tooltip">Export</span>
+                </button>
+                <button class="sb-item" data-view="settings" aria-label="Settings">
+                    <svg viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="3" />
+                        <path
+                            d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
+                    </svg>
+                    <span class="sb-tooltip">Settings</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- ═══ MAIN ═══ -->
+        <div class="main">
+            <!-- Toolbar -->
+            <div class="toolbar">
+                <span class="toolbar-title" id="toolbar-title">Dashboard</span>
+                <div class="toolbar-divider"></div>
+                <div class="toolbar-search-wrap">
+                    <svg viewBox="0 0 24 24">
+                        <circle cx="11" cy="11" r="8" />
+                        <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                    </svg>
+                    <input type="text" class="toolbar-search" placeholder="Search assets, projects, content..."
+                        id="global-search">
+                </div>
+                <div class="toolbar-right">
+                    <button class="btn-sm" id="toolbar-create-btn">
+                        <svg viewBox="0 0 24 24">
+                            <line x1="12" y1="5" x2="12" y2="19" />
+                            <line x1="5" y1="12" x2="19" y2="12" />
+                        </svg>
+                        Create
+                    </button>
+                </div>
+            </div>
+
+            <!-- Content Views -->
+            <div class="content">
+                <div id="v-dashboard" class="view active"></div>
+                <div id="v-projects" class="view"></div>
+                <div id="v-ads" class="view"></div>
+                <div id="v-content" class="view"></div>
+                <div id="v-library" class="view"></div>
+                <div id="v-brandkit" class="view"></div>
+                <div id="v-templates" class="view"></div>
+                <div id="v-history" class="view"></div>
+                <div id="v-export" class="view"></div>
+                <div id="v-settings" class="view"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══ CREATE MODAL ═══ -->
+    <div class="modal-overlay" id="create-overlay">
+        <div class="modal-box">
+            <div class="modal-head">
+                <h3>New Project</h3>
+                <button class="modal-close" id="create-close">
+                    <svg viewBox="0 0 24 24">
+                        <line x1="18" y1="6" x2="6" y2="18" />
+                        <line x1="6" y1="6" x2="18" y2="18" />
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="field">
+                    <label>Project Name</label>
+                    <input type="text" class="field-input" id="in-project" value="" placeholder="e.g. Q1 Campaign">
+                </div>
+
+                <div class="section-label">Mode</div>
+                <div class="mode-select">
+                    <div class="mode-opt selected" data-mode="ads">
+                        <div class="mode-opt-icon"><svg viewBox="0 0 24 24">
+                                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+                            </svg></div>
+                        <div class="mode-opt-title">Ads Creative</div>
+                        <div class="mode-opt-desc">Meta ads, hooks, headlines, storyboards</div>
+                    </div>
+                    <div class="mode-opt" data-mode="content">
+                        <div class="mode-opt-icon"><svg viewBox="0 0 24 24">
+                                <path d="M12 20h9" />
+                                <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
+                            </svg></div>
+                        <div class="mode-opt-title">Content Creation</div>
+                        <div class="mode-opt-desc">Posts, stories, carousels, blogs</div>
+                    </div>
+                </div>
+
+                <div class="section-label">Platforms</div>
+                <div class="platform-chips" id="platform-chips">
+                    <div class="p-chip selected" data-platform="facebook"><svg viewBox="0 0 24 24">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                        </svg>Facebook</div>
+                    <div class="p-chip selected" data-platform="instagram"><svg viewBox="0 0 24 24">
+                            <rect x="2" y="2" width="20" height="20" rx="5" />
+                            <circle cx="12" cy="12" r="5" />
+                            <circle cx="17" cy="6.5" r="1.5" fill="currentColor" stroke="none" />
+                        </svg>Instagram</div>
+                    <div class="p-chip" data-platform="linkedin"><svg viewBox="0 0 24 24">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z" />
+                            <rect x="2" y="9" width="4" height="12" />
+                            <circle cx="4" cy="4" r="2" />
+                        </svg>LinkedIn</div>
+                    <div class="p-chip" data-platform="blog"><svg viewBox="0 0 24 24">
+                            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+                            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+                        </svg>Blog</div>
+                    <div class="p-chip" data-platform="gbp"><svg viewBox="0 0 24 24">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                            <circle cx="12" cy="10" r="3" />
+                        </svg>GBP</div>
+                </div>
+
+                <div class="section-label">Brand &amp; Audience</div>
+                <div class="field">
+                    <label>Company / Client</label>
+                    <input type="text" class="field-input" id="in-company" value="AZ Konnect">
+                </div>
+                <div class="field">
+                    <label>Product or Service</label>
+                    <input type="text" class="field-input" id="in-product" value="AZ Konnect LIVE">
+                </div>
+                <div class="field">
+                    <label>Target Audience</label>
+                    <input type="text" class="field-input" id="in-audience" value="Real estate agents">
+                </div>
+                <div class="field">
+                    <label>Primary Color</label>
+                    <input type="color" class="field-input" id="in-color" value="#057ED6"
+                        style="height:36px;padding:2px;cursor:pointer">
+                </div>
+
+                <div class="section-label">Messaging</div>
+                <div class="field">
+                    <label>The Old Way (enemy)</label>
+                    <input type="text" class="field-input" id="in-old" value="Cold calling">
+                </div>
+                <div class="field">
+                    <label>Your Solution</label>
+                    <input type="text" class="field-input" id="in-solution" value="AI-powered calling">
+                </div>
+                <div class="field">
+                    <label>Key Metric</label>
+                    <input type="text" class="field-input" id="in-metric" value="6,500 calls/week">
+                </div>
+                <div class="field">
+                    <label>Key Result</label>
+                    <input type="text" class="field-input" id="in-result" value="27 meetings booked">
+                </div>
+                <div class="field">
+                    <label>Price / Offer</label>
+                    <input type="text" class="field-input" id="in-price" value="$999 one-time">
+                </div>
+                <div class="field">
+                    <label>Urgency / Guarantee</label>
+                    <input type="text" class="field-input" id="in-urgency" value="72-hour setup">
+                </div>
+                <div class="field">
+                    <label>Tone of Voice</label>
+                    <select class="field-input" id="in-tone">
+                        <option value="confident">Confident &amp; Direct</option>
+                        <option value="friendly">Friendly &amp; Approachable</option>
+                        <option value="urgent">Urgent &amp; Bold</option>
+                        <option value="professional">Professional &amp; Authoritative</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-foot">
+                <button class="btn-generate" id="btn-go">
+                    <svg viewBox="0 0 24 24">
+                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+                    </svg>
+                    Generate Assets
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script src="engine2.js"></script>
+</body>
+
+</html>
