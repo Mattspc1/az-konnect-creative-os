@@ -137,7 +137,7 @@ function renderLibrary() {
 }
 
 // ═══ TEMPLATES / HISTORY / EXPORT / PROJECTS / SETTINGS ═══
-function renderTemplates() { document.getElementById('v-templates').innerHTML = `<div class="view-header"><h2>Templates</h2><p>Saved generation recipes</p></div><div class="empty-state"><div class="empty-icon">${IC.grid}</div><div class="empty-title">No templates saved</div><div class="empty-desc">Save a project configuration as a template for quick reuse.</div><button class="btn-sm btn-primary" onclick="document.getElementById('create-overlay').classList.add('open')">${IC.plus} Create First</button></div>` }
+function renderTemplates() { document.getElementById('v-templates').innerHTML = `<div class="view-header"><h2>Templates</h2><p>Saved generation recipes</p></div><div class="empty-state"><div class="empty-icon">${IC.grid}</div><div class="empty-title">No templates saved</div><div class="empty-desc">Save a project configuration as a template for quick reuse.</div><button class="btn-sm btn-primary" onclick="openCreateModal()">${IC.plus} Create First</button></div>` }
 
 function renderHistory() {
     const v = document.getElementById('v-history');
@@ -155,7 +155,11 @@ function renderExport() {
 function renderProjects() { renderHistory() }
 function renderSettings() {
     document.getElementById('v-settings').innerHTML = `<div class="view-header"><h2>Settings</h2><p>Application preferences</p></div>
-    <div class="bk-grid"><div class="bk-card"><h3>General</h3><div class="bk-row"><div class="bk-value">Version: Creative OS 1.0</div></div><div class="bk-row"><div class="bk-value">Theme: Dark</div></div></div><div class="bk-card"><h3>Data</h3><div class="bk-row"><button class="btn-sm" onclick="localStorage.clear();toast('Data cleared');renderDashboard()">Clear All Data</button></div></div></div>`}
+    <div class="bk-grid"><div class="bk-card"><h3>General</h3><div class="bk-row"><div class="bk-value">Version: Creative OS 1.0</div></div><div class="bk-row"><div class="bk-value">Theme: Dark</div></div></div><div class="bk-card"><h3>Data Reset</h3>
+    <div class="bk-row" style="flex-direction: column; align-items: flex-start; gap: 8px;">
+        <p style="color: var(--text-muted); font-size: 13px; margin: 0;">Danger Zone: This will permanently wipe all generated content, hooks, strings, and project history from this browser.</p>
+        <button class="btn-sm" style="background:#e74c3c;color:#fff;border-color:#c0392b" onclick="if(confirm('Are you sure you want to completely wipe all app data? This action cannot be undone.')) { localStorage.clear(); location.reload(); }">Factory Reset Data</button>
+    </div></div></div>`}
 
 // ═══ PROJECT SAVE/LOAD ═══
 function saveProject() { const p = JSON.parse(localStorage.getItem('cos_projects') || '[]'); p.unshift({ id: Date.now(), company: C.company, name: document.getElementById('in-project').value || C.company, product: C.product, mode: C.mode, date: new Date().toLocaleDateString(), status: 'draft', client: { ...C } }); if (p.length > 30) p.length = 30; localStorage.setItem('cos_projects', JSON.stringify(p)) }

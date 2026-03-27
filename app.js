@@ -34,10 +34,26 @@ function navigateTo(v) {
 }
 
 // Modal
+function openCreateModal() {
+  document.getElementById('in-project').value = '';
+  document.getElementById('in-company').value = '';
+  document.getElementById('in-product').value = '';
+  document.getElementById('in-audience').value = '';
+  document.getElementById('in-old').value = '';
+  document.getElementById('in-solution').value = '';
+  document.getElementById('in-metric').value = '';
+  document.getElementById('in-result').value = '';
+  document.getElementById('in-price').value = '';
+  document.getElementById('in-urgency').value = '';
+  document.getElementById('in-color').value = '#057ED6';
+  document.getElementById('in-tone').value = 'confident';
+  document.getElementById('create-overlay').classList.add('open');
+}
+
 function initModal() {
   const ov = document.getElementById('create-overlay');
-  document.getElementById('btn-create').addEventListener('click', () => ov.classList.add('open'));
-  document.getElementById('toolbar-create-btn').addEventListener('click', () => ov.classList.add('open'));
+  document.getElementById('btn-create').addEventListener('click', openCreateModal);
+  document.getElementById('toolbar-create-btn').addEventListener('click', openCreateModal);
   document.getElementById('create-close').addEventListener('click', () => ov.classList.remove('open'));
   ov.addEventListener('click', e => { if (e.target === ov) ov.classList.remove('open') });
   document.querySelectorAll('.mode-opt').forEach(o => o.addEventListener('click', () => { document.querySelectorAll('.mode-opt').forEach(x => x.classList.remove('selected')); o.classList.add('selected'); C.mode = o.dataset.mode }));
@@ -146,8 +162,8 @@ function renderDashboard() {
   const v = document.getElementById('v-dashboard');
   const projects = JSON.parse(localStorage.getItem('cos_projects') || '[]');
   v.innerHTML = `<div class="view-header"><h2>Welcome back</h2><p>${C.company} Creative OS</p></div>
-    <div class="quick-actions"><button class="qa-btn" onclick="document.getElementById('create-overlay').classList.add('open')">${IC.plus} New Project</button><button class="qa-btn" onclick="navigateTo('ads')">${IC.bolt} Ads Creative</button><button class="qa-btn" onclick="navigateTo('content')">${IC.edit} Content Mode</button><button class="qa-btn" onclick="navigateTo('library')">${IC.grid} Asset Library</button></div>
+    <div class="quick-actions"><button class="qa-btn" onclick="openCreateModal()">${IC.plus} New Project</button><button class="qa-btn" onclick="navigateTo('ads')">${IC.bolt} Ads Creative</button><button class="qa-btn" onclick="navigateTo('content')">${IC.edit} Content Mode</button><button class="qa-btn" onclick="navigateTo('library')">${IC.grid} Asset Library</button></div>
     <div class="dash-grid"><div class="dash-card"><div class="dash-card-label">Hooks</div><div class="dash-card-value">${HOOKS.length}</div><div class="dash-card-sub">5 angles</div></div><div class="dash-card"><div class="dash-card-label">Headlines</div><div class="dash-card-value">${HEADS.length}</div><div class="dash-card-sub">5 angles</div></div><div class="dash-card"><div class="dash-card-label">Primary Texts</div><div class="dash-card-value">${PRIMS.length}</div><div class="dash-card-sub">3 lengths</div></div><div class="dash-card"><div class="dash-card-label">Combinations</div><div class="dash-card-value">${COMBOS.length}</div><div class="dash-card-sub">Meta-ready</div></div></div>
     <div class="dash-section-title">Recent Projects</div>
-    ${projects.length ? `<div class="recent-list">${projects.slice(0, 5).map(p => `<div class="recent-item" onclick="loadProject(${p.id})"><div class="recent-icon">${p.mode === 'ads' ? IC.bolt : IC.edit}</div><div class="recent-info"><div class="recent-name">${p.name || p.company}</div><div class="recent-meta">${p.mode === 'ads' ? 'Ads Creative' : 'Content'} \u00b7 ${p.date}</div></div><span class="recent-status status-${p.status || 'draft'}">${p.status || 'draft'}</span></div>`).join('')}</div>` : `<div class="empty-state"><div class="empty-icon">${IC.folder}</div><div class="empty-title">No projects yet</div><div class="empty-desc">Create your first project to start generating content.</div><button class="btn-sm btn-primary" onclick="document.getElementById('create-overlay').classList.add('open')">${IC.plus} Create Project</button></div>`}`;
+    ${projects.length ? `<div class="recent-list">${projects.slice(0, 5).map(p => `<div class="recent-item" onclick="loadProject(${p.id})"><div class="recent-icon">${p.mode === 'ads' ? IC.bolt : IC.edit}</div><div class="recent-info"><div class="recent-name">${p.name || p.company}</div><div class="recent-meta">${p.mode === 'ads' ? 'Ads Creative' : 'Content'} \u00b7 ${p.date}</div></div><span class="recent-status status-${p.status || 'draft'}">${p.status || 'draft'}</span></div>`).join('')}</div>` : `<div class="empty-state"><div class="empty-icon">${IC.folder}</div><div class="empty-title">No projects yet</div><div class="empty-desc">Create your first project to start generating content.</div><button class="btn-sm btn-primary" onclick="openCreateModal()">${IC.plus} Create Project</button></div>`};`;
 }
